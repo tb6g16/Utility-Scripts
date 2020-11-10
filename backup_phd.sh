@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# THIS NEEDS MORE INSPECTIONG
+# PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/sbin:/mnt/c/Users/user/Documents/richards_lovely_scripts
+# export DISPLAY=:0.0
+
 # define absolute path to source and back-up location
 source=/mnt/c/Users/user/Desktop/PhD
 backup_internal=/mnt/d/PhD-Backup
@@ -17,7 +21,3 @@ single_backup.sh -q $source $backup_external externalHDD_history
 # sync laptop to OneDrive
 echo "Syncing to University OneDrive"
 single_backup.sh -q $source "$backup_onedrive" oneDrive_history
-
-# SHORT COMINGS:
-#   - NO WAY TO AUTOMATICALLY ASSESS ERRORS
-#   - CRON JOB AUTOMATION

@@ -46,24 +46,35 @@ if [ $has_q_flag == "false" ];
 then
     echo "Syncing directories of $source and to $dest"
 fi
-rsync -aq --delete --exclude '*.log' --log-file=$temp_logs/latest_backup.log $source/ "$dest/"
-tail -n 1 $temp_logs/latest_backup.log
-
-# move log files to destination directory
-if [ $has_q_flag == "false" ];
+rsync -avq --delete --exclude '*.log' $source/ "$dest/" 2> "$dest/"errors.log
+# --log-file=$temp_logs/latest_backup.log
+rsync_status=$?
+if [ $rsync_status -ne 0 ];
 then
-    echo "Creating log file"
+    exit_message=$(rsync_status_matcher.sh $rsync_status)
+    attention=/mnt/c/users/user/Desktop/ATTENTION_$backup_history_name.txt
+    error="There was an error with the last backup to $dest:"
+    echo "$error" > $attention
+    cat "$dest/"errors.log >> $attention
+    echo "$rsync_status: $exit_message" >> $attention
 fi
-mv $temp_logs/latest_backup.log "$dest"/latest_backup.log
 
 # appending backup info and move to source directory
 if [ $has_q_flag == "false" ];
 then
     echo "Appending to backup history log"
 fi
-message="$(date): Performed backup (not necessarily successfully)
-    Source: $source/
-    Destination: $dest/
-"
+if [ $rsync_status -eq 0 ];
+then
+    message="$(date): Successfully Performed Backup
+        Source: $source/
+        Destination: $dest/
+    "
+else
+    message="$(date): (ERROR) Performed Backup
+        Source: $source/
+        Destination: $dest/
+    "
+fi
 echo "$message" >> $temp_logs/$backup_history_name.log
 mv $temp_logs/$backup_history_name.log $source/$backup_history_name.log

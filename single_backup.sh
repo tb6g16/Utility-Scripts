@@ -48,6 +48,8 @@ then
 fi
 rsync -avq --delete --exclude '*.log' $source/ "$dest/" 2> "$dest/"errors.log
 # --log-file=$temp_logs/latest_backup.log
+
+# create error notification is something went wrong
 rsync_status=$?
 if [ $rsync_status -ne 0 ];
 then

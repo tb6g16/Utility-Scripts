@@ -22,13 +22,18 @@ shift $(( OPTIND - 1 ))
 # define variables
 source=$1
 dest=$2
+temp_logs=/mnt/c/Users/user/Documents/rsync_temp_logs
 
 # syncing the directories
 if [ $has_q_flag == "false" ];
 then
     echo "Pushing directories from $source to $dest"
 fi
-rsync -avq --delete --exclude '*.log' $source/ "$dest/" 2> "$dest/"errors.log
+rsync -avq --delete --exclude '*.log' $source/ $dest/ 2> /mnt/c/Users/user/Documents/richards_lovely_scripts/errors.log
+
+# move error log file to remote location and delete from local
+scp -q /mnt/c/Users/user/Documents/richards_lovely_scripts/errors.log $dest/errors.log
+rm /mnt/c/Users/user/Documents/richards_lovely_scripts/errors.log
 
 # echo error message if something went wrong
 rsync_status=$?

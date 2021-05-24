@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This bash file will act a wrapper to the mail command, providing a bit of
 # default behaviour I think would be useful

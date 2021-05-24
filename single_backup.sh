@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This bash script perform a single backup of a given source to a desired
 # destination (and provide all log files)

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # THIS NEEDS MORE INSPECTIONG
 # PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/sbin:/mnt/c/Users/user/Documents/richards_lovely_scripts

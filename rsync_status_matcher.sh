@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # This script prints the desscription of an rsync exit status if there is an
 # error (i.e. if the exit status is non-zero).
 

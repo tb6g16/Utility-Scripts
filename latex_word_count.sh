@@ -8,10 +8,10 @@
 filename=$1
 
 # convert the pdf file to a text file
-pdftotext ./$filename.pdf
+pdftotext ./out/$filename.pdf
 
 # perform a word count on the text file
-wc -w $filename.txt
+wc -w ./out/$filename.txt
 
 # remove the text file afterwards
-rm ./$filename.txt
+rm ./out/$filename.txt

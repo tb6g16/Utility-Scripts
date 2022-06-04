@@ -11,7 +11,7 @@ backup_internal=/mnt/d/PhD-Backup
 backup_onedrive=/mnt/c/Users/user/'OneDrive - University of Southampton'/PhD-Backup
 
 # sync laptop to internal HDD and read completion line of logs
-echo "Syncing to interanl HDD"
+echo "Syncing to internal HDD"
 single_backup.sh -q $source $backup_internal internalHDD_history
 
 # sync laptop to external HDD

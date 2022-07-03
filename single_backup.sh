@@ -46,7 +46,7 @@ if [ $has_q_flag == "false" ];
 then
     echo "Syncing directories of $source and to $dest"
 fi
-rsync -avq --delete --exclude={'*.log','*/venv'} $source/ "$dest/" 2> "$dest/"errors.log
+rsync -avq --delete --exclude={'*.log','venv/','.git/','Manifest.toml','.vscode/','__pycache__/','.ipynb_checkpoints/'} $source/ "$dest/" 2> "$dest/"errors.log
 # --log-file=$temp_logs/latest_backup.log
 
 # create error notification is something went wrong

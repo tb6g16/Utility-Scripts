@@ -29,7 +29,7 @@ if [ $has_q_flag == "false" ];
 then
     echo "Pushing directories from $source to $dest"
 fi
-rsync -avq --delete --exclude '*.log' $source/ $dest/ 2> /mnt/c/Users/user/Documents/richards_lovely_scripts/errors.log
+rsync -avq --delete --exclude={'*.log','venv/','.git/','Manifest.toml','.vscode/','__pycache__/','.ipynb_checkpoints/'} $source/ $dest/ 2> /mnt/c/Users/user/Documents/richards_lovely_scripts/errors.log
 
 # move error log file to remote location and delete from local
 scp -q /mnt/c/Users/user/Documents/richards_lovely_scripts/errors.log $dest/errors.log

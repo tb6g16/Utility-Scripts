@@ -1,0 +1,7 @@
+sshfs -o allow_root,uid=1000,gid=1000 sirius:/mnt/raid/tom/ /home/tb6g16/raid/
+
+allow_root: allows the root access to the mounted filesystem
+uid: ID of the user that owns the mounted filesystem
+gid: ID of the group that owns the mounted filesystem
+
+uid,gid=1000 correspond to the user and group tb6g16 and allow rsync to work properly
